@@ -1,0 +1,65 @@
+
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body bg-primary text-white rounded">
+                <h5 class="card-title">Total Products</h5>
+                <h2>500</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+          <div class="card-body bg-warning text-white rounded">
+              <h5 class="card-title">Total Categories</h5>
+              <h2>500</h2>
+          </div>
+      </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+        <div class="card-body bg-secondary text-white rounded">
+            <h5 class="card-title">Total Revenue</h5>
+            <h2>12000</h2>
+        </div>
+    </div>
+</div>
+
+    <table style="margin: 20px;">
+        <thead>
+          <tr>
+            <th>ProductId</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>CategoryId</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of categories">
+            <td>{{ category.products[0].pid }}</td>            
+            <td>{{ category.products[0].productName }}</td>
+            <td>{{ category.products[0].quantity }}</td>
+            <td>{{ category.products[0].price }}</td>
+            <td>{{ category.cid }}</td>
+            <td>{{ category.categoryName }}</td>
+            <td>
+              <!-- <button (click)="editProduct(product.id)">Edit</button>
+              <button (click)="deleteProduct(product.id)">Delete</button>
+            </td> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+</div>
+<div class="row pt-3">
+  <div class="col-3 text-center">
+      <button (click)="getUser()" class="btn btn-danger">Load Users</button>
+      
+  </div>
+
+</div>
+
+

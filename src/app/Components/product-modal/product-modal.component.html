@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Enter Product Details</h2>
+<mat-dialog-content style="width: 100%;">
+    <div class="modal-body">
+        <form [formGroup]="productForm">
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Product Name</label>
+                <input style="border-radius: 0px;" type="text" class="form-control" formControlName="productName" id="productName">
+            </div>
+            <div class="form-group">
+                <label for="message-text" class="col-form-label">Quantity</label>
+                <input style="border-radius: 0px;" type="text" class="form-control" formControlName="quantity" id="quantity">
+            </div>
+            <div class="form-group">
+                <label for="message-text" class="col-form-label">Price</label>
+                <input style="border-radius: 0px;" type="text" class="form-control" formControlName="price" id="price">
+            </div>
+            <div class="form-group">
+                <label for="message-text" class="col-form-label">CategoryId</label>
+                <input style="border-radius: 0px;" type="text" class="form-control" formControlName="categoryId" id="categoryId">
+            </div>
+   
+    </form>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="close()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="onSave()">Add</button>
+    </div>
+</mat-dialog-actions>
