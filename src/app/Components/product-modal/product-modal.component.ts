@@ -30,6 +30,7 @@ formValue: any;
 
  products : any[] = []
  isApi : boolean = false
+ productCount : number | undefined
 
 getUser(){
   debugger
@@ -37,6 +38,7 @@ getUser(){
       this.http.get("https://localhost:7061/api/Home/GetProducts").subscribe((res:any)=>{
         debugger
           this.products = res
+          
 
           // console.log(this.categories)
           this.isApi =false
