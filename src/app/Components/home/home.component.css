@@ -2,3 +2,28 @@
     margin: 20px;
     
 }
+
+.selected-filters {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;  /* Adds space between the rectangles */
+  }
+  
+  .filter-rectangle {
+    display: inline-block;
+    padding: 10px 20px;  /* Adjust padding for box size */
+    background-color: #007bff;  /* Blue background color, can be customized */
+    color: white;
+    border-radius: 8px;  /* Rounded corners for a more polished look */
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.5;  /* Adjust line height for better text centering */
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);  /* Optional: Add a shadow effect */
+  }
+  
+  .filter-rectangle:hover {
+    background-color: #0056b3;  /* Darker blue on hover */
+  }
+  

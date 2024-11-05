@@ -24,8 +24,15 @@
       <!-- <button style="width:30% ;" *ngIf="searchAttempted" type="button" class="btn btn-success"
           (click)="getUser()" data-mdb-ripple-init>All Users</button> -->
     </div>
-    <span mat-button (click)="openModal()" style="font-size: large; padding: 5px; margin-top: 10px; width: 100%;"
-      class="btn btn-primary">Add</span>
+    <div style="font-size: 15px;width:100% ;padding: 5px;" class="input-group">
+      <input style="padding: 10px;width:70% ;" type="search" class="form-control" placeholder="Category Name"
+        id="categoryName" [(ngModel)]="catObj.categoryName" name="categoryName" />
+      <button style="width:20% ;" type="button" class="btn btn-success" (click)="addCategory()"
+        data-mdb-ripple-init>Add</button>
+      <!-- <button style="width:30% ;" *ngIf="searchAttempted" type="button" class="btn btn-success"
+          (click)="getUser()" data-mdb-ripple-init>All Users</button> -->
+    </div>
+    
     <span mat-button (click)="getAllCategory()" style="font-size: large; padding: 5px; margin-top: 10px; width: 100%;"
       class="btn btn-primary">Show All</span>
   </div>

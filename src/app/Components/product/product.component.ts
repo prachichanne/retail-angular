@@ -47,9 +47,17 @@ export class ProductComponent implements OnInit {
 
 
   openModal() {
+
+    debugger
     const dialogRef = this.dialog.open(ProductModalComponent, {
-      panelClass: 'custom-dialog-content',
+      panelClass: 'custom-dialog-content',    
     });
+
+    dialogRef.afterClosed().subscribe(()=>{
+      this.getUser();
+    }
+      
+    );
   }
 
   searchById() {
@@ -65,7 +73,6 @@ export class ProductComponent implements OnInit {
       }
     })
   }
-
 
   getUser() {
     debugger

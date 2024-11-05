@@ -35,4 +35,8 @@ export class RetailServiceService {
   deleteCatById(id:any){
     return this.http.delete("https://localhost:7061/api/Home/DeleteCategory/"+id)
   }
+
+  addCategory(catName:any){
+    return  this.http.post("https://localhost:7061/api/Home/AddCategory",catName)
+  }
 }

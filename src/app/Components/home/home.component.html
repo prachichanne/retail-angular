@@ -16,12 +16,65 @@
     </div>
   </div>
   <div class="col-sm-4">
-    <div class="card">
-      <div class="card-body bg-secondary text-white rounded">
-        <h5 class="card-title">Total Revenue</h5>
-        <h2>{{ totalPrice.toFixed(2)}}</h2>
-      </div>
+    <div class="dropdown">
+      <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        Sort and Filter
+      </button> -->
+      <span style="font-size: large; padding: 5px; margin-top: 10px; width: 100%;" mat-button
+        class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Sort and Filter
+      </span>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 100%; padding: 10px;">
+        <div class="box-section">
+          <b>CATEGORY</b>
+          <ng-container *ngFor="let category of categories">
+            <label class="dropdown-item">
+              <input type="checkbox" [checked]="selectedFilter.includes(category.cid)"
+                (change)="toggleFilter(category.cid, $event)" class="form-check-input" />
+              {{ category.categoryName }}
+
+            </label>
+          </ng-container>
+
+
+        </div>
+        <li class="vertical-divider"></li> <!-- Vertical Divider -->
+
+        <div class="sorting-section">
+          <b>SORT BY</b>
+          <li>
+            <label class="dropdown-item">
+              <input 
+              type="radio" 
+              name="sortOption" 
+              id="sortBynameAsc" 
+              (change)="sortCategories('nameAsc')" 
+              [checked]="sortBy === 'nameAsc'" 
+            />
+            <label for="sortByNameAsc">Price : Low-High</label><br>
+            </label>
+          </li>
+          <li>
+            <label class="dropdown-item">
+              <input 
+              type="radio" 
+              name="sortOption" 
+              id="sortByNameDsc" 
+              (change)="sortCategories('nameDsc')" 
+              [checked]="sortBy === 'nameDsc'" 
+            />
+            <label for="sortByNameDesc">Price : High-Low</label><br>            </label>
+          </li>
+          <button type="button" (click)="filterBtn()">Apply filter</button>
+        </div>
+      </ul>
+
     </div>
+    <span (click)="removeAllFilters()" style="font-size: large; padding: 5px; margin-top: 10px; width: 100%;" mat-button
+      class="btn btn-secondary" type="button" aria-expanded="false">
+      Clear All Filters
+    </span>
   </div>
 
 
@@ -53,7 +106,14 @@
           </tr>
         </ng-container>
       </table> -->
-
+  <!-- Displaying filtered categories -->
+  <!-- Show selected filters in rectangular boxes -->
+  <div style="align-items: center;" class="selected-filters">
+    <b>Filtered Category :</b>
+    <span *ngFor="let category of filteredCategoriesList" class="filter-rectangle">
+      {{ category.categoryName}}
+    </span>
+  </div>
 
 
 
@@ -70,11 +130,11 @@
                 <th>Quantity</th>
                 <th>CategoryId</th>
                 <th>Category</th>
-             
+
               </tr>
             </thead>
             <tbody>
-              <ng-container *ngFor="let category of categories">
+              <ng-container *ngFor="let category of filteredCategoriesList">
                 <tr *ngFor="let product of category.products">
                   <td>{{ product.pid }}</td>
                   <td>{{ product.productName }}</td>

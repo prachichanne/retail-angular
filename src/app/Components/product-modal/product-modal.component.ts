@@ -12,7 +12,12 @@ import { ProductComponent } from '../product/product.component';
   templateUrl: './product-modal.component.html',
   styleUrl: './product-modal.component.css'
 })
-export class ProductModalComponent  {
+export class ProductModalComponent implements OnInit  {
+
+  ngOnInit(): void {
+    
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private dialogRef: MatDialogRef<ProductModalComponent>) {}
 
@@ -32,18 +37,18 @@ formValue: any;
  isApi : boolean = false
  productCount : number | undefined
 
-getUser(){
-  debugger
-  this.isApi =true
-      this.http.get("https://localhost:7061/api/Home/GetProducts").subscribe((res:any)=>{
-        debugger
-          this.products = res
+// getUser(){
+//   debugger
+//   this.isApi =true
+//       this.http.get("https://localhost:7061/api/Home/GetProducts").subscribe((res:any)=>{
+//         debugger
+//           this.products = res
           
 
-          // console.log(this.categories)
-          this.isApi =false
-      })
-}
+//           // console.log(this.categories)
+//           this.isApi =false
+//       })
+// }
 
 onSave(){
   
@@ -52,10 +57,10 @@ onSave(){
     this.http.post("https://localhost:7061/api/Home/AddProduct",this.formValue).subscribe((res:any)=>{
       debugger
       console.log(res.result)
-      this.dialogRef.close(); 
+      
       if(res){
         alert("product add success")
-        this.getUser();
+        this.dialogRef.close();
       }else{
         alert(res.message)
       }

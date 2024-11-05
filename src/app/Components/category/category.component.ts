@@ -26,6 +26,11 @@ export class CategoryComponent implements OnInit {
 
   filteredCategories: any[] = [];
   searchTerm: string = '';
+  formValue : any
+ 
+  catObj = {
+    categoryName : ''
+  }
 
   ngOnInit(): void {
     this.getAllCategory();
@@ -34,11 +39,11 @@ export class CategoryComponent implements OnInit {
 
   constructor(private dialog: MatDialog, private retailService: RetailServiceService) { }
 
-  Category: FormGroup = new FormGroup({
+  // CategoryForm: FormGroup = new FormGroup({
 
-    categoryName: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+  //   categoryName: new FormControl('', [Validators.required, Validators.maxLength(30)]),
 
-  })
+  // })
 
 
 
@@ -105,6 +110,25 @@ export class CategoryComponent implements OnInit {
       console.log(this.filteredCategories)
     }
 
+  }
+
+  
+  addCategory(){
+      debugger
+      // const jsonObject = JSON.parse(this.categoryName);
+      console.log(this.catObj)
+      // console.log(jsonObject)
+      this.retailService.addCategory(this.catObj).subscribe((res:any)=>{
+        console.log(res.result)
+      
+      if(res){
+        alert("category add success")
+        this.getAllCategory();
+        this.dialogRef.close();
+      }else{
+        alert(res.message)
+      }
+      })
   }
 
   
