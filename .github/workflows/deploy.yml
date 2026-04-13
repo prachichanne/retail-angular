@@ -26,6 +26,9 @@ jobs:
       - name: Build Angular project
         run: npm run build -- --configuration production --base-href=/retail-angular/
 
+      - name: Move browser files to dist root
+        run: mv ./dist/retail-angular/browser/* ./dist/retail-angular/ && rm -rf ./dist/retail-angular/browser
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
